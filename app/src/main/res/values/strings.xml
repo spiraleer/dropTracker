@@ -8,4 +8,6 @@
     <string name="greeting_afternoon">Good Afternoon! \u2600\uFE0F</string>
     <string name="greeting_evening">Good Evening! \uD83C\uDF19</string>
     <string name="greeting_night">Good Night! \uD83C\uDF1C</string>
+
+    <string name="settings">Settings</string>
 </resources>

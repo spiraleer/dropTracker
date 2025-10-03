@@ -7,4 +7,5 @@
     <string name="greeting_afternoon">Добрый день! \u2600\uFE0F</string>
     <string name="greeting_evening">Добрый вечер! \uD83C\uDF19</string>
     <string name="greeting_night">Доброй ночи! \uD83C\uDF1C</string>
+    <string name="settings">Настройки</string>
 </resources>
