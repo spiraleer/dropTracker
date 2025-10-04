@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -8,7 +9,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Water"
+        android:text="@string/add_water_dialog_title"
         android:textSize="24sp"
         android:textStyle="bold"
         android:gravity="center"
@@ -18,34 +19,37 @@
         android:id="@+id/btnSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Small - 250ml"
+        android:text="@string/small_amount"
         android:textSize="18sp"
         android:layout_marginBottom="8dp"
-        style="@style/Widget.Material3.Button.OutlinedButton" />
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        tools:ignore="VisualLintButtonSize" />
 
     <Button
         android:id="@+id/btnMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Medium - 500ml"
+        android:text="@string/medium_amount"
         android:textSize="18sp"
         android:layout_marginBottom="8dp"
-        style="@style/Widget.Material3.Button.OutlinedButton" />
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        tools:ignore="VisualLintButtonSize" />
 
     <Button
         android:id="@+id/btnLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Large - 750ml"
+        android:text="@string/large_amount"
         android:textSize="18sp"
         android:layout_marginBottom="16dp"
-        style="@style/Widget.Material3.Button.OutlinedButton" />
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        tools:ignore="VisualLintButtonSize" />
 
     <Button
         android:id="@+id/btnCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cancel"
+        android:text="@string/cancel"
         android:textSize="16sp"
         android:layout_gravity="center"
         style="@style/Widget.Material3.Button.TextButton" />

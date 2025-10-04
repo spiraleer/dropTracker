@@ -10,4 +10,11 @@
     <string name="greeting_night">Доброй ночи! \uD83C\uDF1C</string>
     <string name="settings">Настройки</string>
     <string name="add_water">Добавить запись</string>
+    <string name="add_water_dialog_title">Добавить запись</string>
+    <string name="small_amount">Малый - 250мл</string>
+    <string name="medium_amount">Средний - 500мл</string>
+    <string name="large_amount">Большой - 750мл</string>
+    <string name="cancel">Отменить</string>
+    <string name="water_added">%d мл добавлено!</string>
+    <string name="today_total">Сегодня: %dмл</string>
 </resources>
