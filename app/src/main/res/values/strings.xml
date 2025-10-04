@@ -2,7 +2,9 @@
     <string name="app_name" translatable="false">dropTracker</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
+
     <string name="title_notifications">Notifications</string>
+    <string name="notifications_empty_message">Your notifications will be here.</string>
 
     <string name="greeting_morning">Good Morning! \uD83C\uDF05</string>
     <string name="greeting_afternoon">Good Afternoon! \u2600\uFE0F</string>

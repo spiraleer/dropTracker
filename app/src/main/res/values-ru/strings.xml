@@ -3,6 +3,7 @@
     <string name="title_dashboard">Сегодня</string>
     <string name="title_notifications">Уведомления</string>
     <string name="title_home">Главная страница</string>
+    <string name="notifications_empty_message">Здесь будут ваши уведомления.</string>
     <string name="greeting_morning">Доброе утро! \uD83C\uDF05</string>
     <string name="greeting_afternoon">Добрый день! \u2600\uFE0F</string>
     <string name="greeting_evening">Добрый вечер! \uD83C\uDF19</string>
