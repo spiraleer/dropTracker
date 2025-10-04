@@ -22,7 +22,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Your other dashboard content goes here below the time text -->
-    <!-- Add your existing RecyclerView, cards, or other UI elements here -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/fab_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.85" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/addButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="@string/add_water"
+        android:text="Add Water"
+        android:textColor="@android:color/white"
+        app:backgroundTint="@color/purple_500"
+        app:cornerRadius="16dp"
+        app:elevation="8dp"
+        app:icon="@android:drawable/ic_input_add"
+        app:iconTint="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@id/fab_guideline"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,4 +9,5 @@
     <string name="greeting_evening">Добрый вечер! \uD83C\uDF19</string>
     <string name="greeting_night">Доброй ночи! \uD83C\uDF1C</string>
     <string name="settings">Настройки</string>
+    <string name="add_water">Добавить запись</string>
 </resources>

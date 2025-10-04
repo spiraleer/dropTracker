@@ -27,6 +27,11 @@ class DashboardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         updateGreeting()
+
+        // Add click listener (does nothing yet)
+        binding.addButton.setOnClickListener {
+            // Will add functionality later
+        }
     }
     private fun updateGreeting() {
         val calendar = Calendar.getInstance()
