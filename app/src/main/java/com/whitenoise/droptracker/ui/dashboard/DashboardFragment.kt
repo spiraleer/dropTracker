@@ -14,6 +14,7 @@ import com.whitenoise.droptracker.databinding.FragmentDashboardBinding
 import java.text.SimpleDateFormat
 import java.util.*
 import android.content.SharedPreferences
+import androidx.core.content.ContextCompat
 
 class DashboardFragment : Fragment() {
 
@@ -28,6 +29,7 @@ class DashboardFragment : Fragment() {
         private const val PREFS_NAME = "WaterTrackerPrefs"
         private const val KEY_TODAY_TOTAL = "today_total"
         private const val KEY_LAST_DATE = "last_date"
+        private const val KEY_LAST_AMOUNT = "last_amount"
     }
 
     override fun onCreateView(
@@ -55,17 +57,23 @@ class DashboardFragment : Fragment() {
         updateTotalDisplay()
     }
 
+    @SuppressLint("StringFormatInvalid")
     private fun loadOrResetData() {
         val today = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
         val lastDate = sharedPreferences.getString(KEY_LAST_DATE, "")
 
         if (lastDate != today) {
-            // It's a new day - reset counter
+            // It's a new day - reset counter and last amount
             todayTotal = 0
+            binding.lastAddedText.text = getString(R.string.last_added_default)
             saveData()
         } else {
             // Load yesterday's data
             todayTotal = sharedPreferences.getInt(KEY_TODAY_TOTAL, 0)
+            val lastAmount = sharedPreferences.getInt(KEY_LAST_AMOUNT, 0)
+            if (lastAmount > 0) {
+                binding.lastAddedText.text = getString(R.string.last_added, lastAmount)
+            }
         }
     }
 
@@ -109,20 +117,48 @@ class DashboardFragment : Fragment() {
         dialog.show()
     }
 
+    @SuppressLint("StringFormatInvalid", "UseKtx")
     private fun addWater(amount: Int) {
+        val previousTotal = todayTotal
         todayTotal += amount
-        saveData() // Save immediately after adding water
+
+        // Save last amount
+        with(sharedPreferences.edit()) {
+            putInt(KEY_LAST_AMOUNT, amount)
+            apply()
+        }
+
+        saveData()
         updateTotalDisplay()
 
-        // Show confirmation snackbar
-        Snackbar.make(binding.root, getString(R.string.water_added, amount), Snackbar.LENGTH_SHORT)
-            .setAction("Undo") {
-                // Undo functionality
-                todayTotal -= amount
-                saveData() // Save after undo too
-                updateTotalDisplay()
+        // Update last added display
+        binding.lastAddedText.text = getString(R.string.last_added, amount)
+
+        // Determine which message to show
+        when {
+            previousTotal < 2000 && todayTotal >= 2000 -> {
+                // First time reaching goal
+                Snackbar.make(binding.root, getString(R.string.goal_reached), Snackbar.LENGTH_LONG)
+                    .setBackgroundTint(ContextCompat.getColor(requireContext(), R.color.purple_500))
+                    .show()
             }
-            .show()
+            todayTotal >= 2000 -> {
+                // Already over goal - encouraging message
+                Snackbar.make(binding.root, getString(R.string.goal_crushing, amount), Snackbar.LENGTH_SHORT)                    .setBackgroundTint(ContextCompat.getColor(requireContext(), R.color.purple_500))
+                    .show()
+            }
+            else -> {
+                // Under goal - regular confirmation
+                Snackbar.make(binding.root, getString(R.string.water_added, amount), Snackbar.LENGTH_SHORT)
+                    .setAction(getString(R.string.undo)) {
+                        todayTotal -= amount
+                        saveData()
+                        updateTotalDisplay()
+                        binding.lastAddedText.text = getString(R.string.last_added_default)
+                    }
+                    .show()
+            }
+        }
     }
 
     private fun updateTotalDisplay() {

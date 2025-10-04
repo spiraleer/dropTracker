@@ -24,4 +24,9 @@
     <string name="cancel">Cancel</string>
     <string name="water_added">%d ml added!</string>
     <string name="today_total">Today: %dml</string>
+    <string name="last_added">Last: %dml</string>
+    <string name="last_added_default">Last: --ml</string>
+    <string name="goal_reached">🎉 You reached your daily goal!</string>
+    <string name="undo">Undo</string>
+    <string name="goal_crushing">🔥 You\'re crushing your goal! +%dml</string>
 </resources>
