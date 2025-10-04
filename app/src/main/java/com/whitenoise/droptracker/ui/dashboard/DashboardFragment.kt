@@ -1,5 +1,6 @@
 package com.whitenoise.droptracker.ui.dashboard
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
@@ -68,6 +69,7 @@ class DashboardFragment : Fragment() {
         }
     }
 
+    @SuppressLint("UseKtx")
     private fun saveData() {
         val today = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
         with(sharedPreferences.edit()) {
