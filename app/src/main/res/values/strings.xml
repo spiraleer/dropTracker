@@ -14,4 +14,11 @@
     <string name="settings">Settings</string>
 
     <string name="add_water">Add water</string>
+    <string name="add_water_dialog_title">Add Water</string>
+    <string name="small_amount">Small - 250ml</string>
+    <string name="medium_amount">Medium - 500ml</string>
+    <string name="large_amount">Large - 750ml</string>
+    <string name="cancel">Cancel</string>
+    <string name="water_added">%d ml added!</string>
+    <string name="today_total">Today: %dml</string>
 </resources>
