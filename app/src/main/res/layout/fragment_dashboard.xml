@@ -27,6 +27,34 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.85" />
 
+    <!-- Progress Circle Container -->
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progressCircle"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="108dp"
+        app:indicatorColor="@color/purple_500"
+        app:indicatorSize="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/greetingText"
+        app:trackColor="#333333"
+        app:trackThickness="8dp" />
+
+    <!-- Progress Text - Centered inside the circle -->
+    <TextView
+        android:id="@+id/progressText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0%"
+        android:textSize="24sp"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@id/progressCircle"
+        app:layout_constraintBottom_toBottomOf="@id/progressCircle"
+        app:layout_constraintStart_toStartOf="@id/progressCircle"
+        app:layout_constraintEnd_toEndOf="@id/progressCircle" />
+
     <TextView
         android:id="@+id/waterCounterText"
         android:layout_width="wrap_content"

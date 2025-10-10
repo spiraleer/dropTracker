@@ -15,9 +15,11 @@ import java.text.SimpleDateFormat
 import java.util.*
 import android.content.SharedPreferences
 import androidx.core.content.ContextCompat
+import android.graphics.Color
 
 class DashboardFragment : Fragment() {
 
+    private val DAILY_GOAL = 2000
     private var _binding: FragmentDashboardBinding? = null
     private val binding get() = _binding!!
 
@@ -54,6 +56,11 @@ class DashboardFragment : Fragment() {
         binding.addButton.setOnClickListener {
             showAddWaterDialog()
         }
+
+        // Initialize progress circle
+        binding.progressCircle.progress = 0
+        binding.progressCircle.max = 100
+
         updateTotalDisplay()
     }
 
@@ -163,6 +170,21 @@ class DashboardFragment : Fragment() {
 
     private fun updateTotalDisplay() {
         binding.waterCounterText.text = getString(R.string.today_total, todayTotal)
+
+        // Update progress circle
+        val progress = (todayTotal.toFloat() / DAILY_GOAL * 100).coerceAtMost(100f)
+        binding.progressCircle.progress = progress.toInt()
+
+        // Update percentage text
+        binding.progressText.text = "${progress.toInt()}%"
+
+        // Change color based on progress
+        val color = when {
+            progress >= 100 -> Color.GREEN
+            progress >= 75 -> Color.YELLOW
+            else -> ContextCompat.getColor(requireContext(), R.color.purple_500)
+        }
+        binding.progressCircle.setIndicatorColor(color)
     }
 
     private fun updateGreeting() {
