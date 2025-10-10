@@ -169,6 +169,8 @@ class DashboardFragment : Fragment() {
     }
 
     private fun updateTotalDisplay() {
+        val previousProgress = binding.progressCircle.progress // Store previous progress
+
         binding.waterCounterText.text = getString(R.string.today_total, todayTotal)
 
         // Update progress circle
@@ -185,6 +187,18 @@ class DashboardFragment : Fragment() {
             else -> ContextCompat.getColor(requireContext(), R.color.purple_500)
         }
         binding.progressCircle.setIndicatorColor(color)
+
+        // Haptic feedback - only when progress increases
+        if (progress.toInt() > previousProgress) {
+            performHapticFeedback()
+        }
+    }
+
+    private fun performHapticFeedback() {
+        binding.progressCircle.performHapticFeedback(
+            android.view.HapticFeedbackConstants.VIRTUAL_KEY,
+            android.view.HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING
+        )
     }
 
     private fun updateGreeting() {
